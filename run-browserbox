@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+BROWSER=$1
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 {chromium|firefox}"
+    exit 1
+fi
+
+docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix browserbox:$BROWSER

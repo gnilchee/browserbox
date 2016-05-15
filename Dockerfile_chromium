@@ -1,0 +1,10 @@
+FROM ubuntu:16.04
+
+RUN apt-get update && apt-get install -y chromium-browser module-init-tools
+
+RUN adduser --gecos "" --shell /bin/bash --disabled-password browser
+
+USER browser
+ENV HOME /home/browser
+# This is bad practice but also running as browser user with no sudo perms
+CMD /usr/bin/chromium-browser --no-sandbox
